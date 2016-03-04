@@ -1,0 +1,3 @@
+command qsub -v PATH -cwd -S /bin/bash -j y -l arch=*64* -q gpu-honda.q
+option gpu=1
+option gpu=* -l gpu=$0
