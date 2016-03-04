@@ -1,0 +1,2 @@
+compute-eer exp/score.trans/ivector_plda/plda.score.key 
+LOG (compute-eer:main():compute-eer.cc:136) Equal error rate is 10.4209%, at threshold 1.25637

@@ -1,0 +1,2 @@
+compute-eer exp/score.dnn/cds.score.key 
+LOG (compute-eer:main():compute-eer.cc:136) Equal error rate is 18.9081%, at threshold 10.7109

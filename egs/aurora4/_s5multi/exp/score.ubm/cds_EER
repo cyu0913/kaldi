@@ -1,0 +1,2 @@
+compute-eer exp/score.ubm/cds.score.key 
+LOG (compute-eer:main():compute-eer.cc:136) Equal error rate is 21.4083%, at threshold 12.3799
