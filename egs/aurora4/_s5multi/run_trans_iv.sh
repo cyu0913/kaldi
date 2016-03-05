@@ -23,17 +23,17 @@ ivdim=200
 run_trans_iv_extract(){
    log_start "Transcript Based Ivector Extraction"
 
-   sid/train_full_ubm_senones.sh --nj 40 --cmd "$train_cmd" data/train_si84_multi \
+   sid/train_full_ubm_trans.sh --nj 40 --cmd "$train_cmd" data/train_si84_multi \
        exp/tri2b_multi_ali_si84 exp/full_ubm_senones || exit 1;
 
-   sid/train_ivector_extractor_senones.sh --nj 40 --cmd "$train_cmd" \
+   sid/train_ivector_extractor_trans.sh --nj 40 --cmd "$train_cmd" \
         --ivector-dim $ivdim --num-iters 5 exp/full_ubm_senones/final.ubm data/train_si84_multi exp/tri2b_multi_ali_si84 \
         exp/extractor_senones || exit 1;
 
-   sid/extract_ivectors_senones.sh --cmd "$train_cmd" --nj 80 \
-        exp/extractor_senones data/test_eval92 exp/tri2b_multi_ali_eval92 data/test_eval92.trans-iv || exit 1;
+   sid/extract_ivectors_trans.sh --cmd "$train_cmd" --nj 80 \
+        exp/extractor_trans data/test_eval92 exp/tri2b_multi_ali_eval92 data/test_eval92.trans-iv || exit 1;
 
-   sid/extract_ivectors_senones.sh --cmd "$train_cmd" --nj 40 \
+   sid/extract_ivectors_trans.sh --cmd "$train_cmd" --nj 40 \
         exp/extractor_senones data/train_si84_multi exp/tri2b_multi_ali_si84 data/train_si84_multi.trans-iv || exit 1;
 
    log_end "Transcript Based Ivector Extraction"

@@ -126,6 +126,9 @@ typedef RandomAccessTableReader<GaussPostHolder> RandomAccessGaussPostReader;
 /// Scales the BaseFloat (weight) element in the posterior entries.
 void ScalePosterior(BaseFloat scale, Posterior *post);
 
+/// Weighted sum of two posteiors of the same length
+void WeightedSumPosterior(BaseFloat scale, Posterior *post1, Posterior *post2);
+
 /// Returns the total of all the weights in "post".
 BaseFloat TotalPosterior(const Posterior &post);
 

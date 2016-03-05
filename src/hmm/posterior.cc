@@ -213,6 +213,20 @@ void ScalePosterior(BaseFloat scale, Posterior *post) {
   }
 }
 
+void WeightedSumPosterior(BaseFloat scale, Posterior *post1, Posterior *post2){
+
+    KALDI_ASSERT(post1->size() == post2->size());
+    KALDI_ASSERT((*post1)[1].size() == (*post2)[1].size());
+    for(size_t i=0; i < post1->size(); i++){
+        
+        for (size_t j=0; j < (*post2)[i].size() ;j++){
+            
+             (*post1)[i][j].second = scale*(*post1)[i][j].second + (1-scale)*(*post2)[i][j].second;
+        }    
+    }
+}
+
+
 BaseFloat TotalPosterior(const Posterior &post) {
   double sum =  0.0;
   size_t T = post.size();
