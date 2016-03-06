@@ -78,7 +78,7 @@ int main(int argc, char *argv[]) {
         BaseFloat post_scale = (scale_or_scale_rspecifier == "" ? global_scale
                                 : scale_reader.Value(key));
 
-             if (posterior2_reader.Key() != key){
+             if (posterior2_reader.Key() == key){
                  WeightedSumPosterior(post_scale, &posterior, &posterior2);
                  posterior2_reader.FreeCurrent();
                  posterior2_reader.Next();

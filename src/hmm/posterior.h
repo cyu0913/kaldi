@@ -129,6 +129,9 @@ void ScalePosterior(BaseFloat scale, Posterior *post);
 /// Weighted sum of two posteiors of the same length
 void WeightedSumPosterior(BaseFloat scale, Posterior *post1, Posterior *post2);
 
+/// Weighted sum of posteriors and a forced alignment
+void WeightedSumPosteriorAli(BaseFloat scale, Posterior *post, const std::vector<int32> &ali);
+
 /// Returns the total of all the weights in "post".
 BaseFloat TotalPosterior(const Posterior &post);
 
