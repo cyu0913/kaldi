@@ -132,6 +132,13 @@ void WeightedSumPosterior(BaseFloat scale, Posterior *post1, Posterior *post2);
 /// Weighted sum of posteriors and a forced alignment
 void WeightedSumPosteriorAli(BaseFloat scale, Posterior *post, const std::vector<int32> &ali);
 
+
+/// Weighted sum of posteriors and a forced alignment, plus posterior prunning
+
+void WeightedSumPosteriorAli(BaseFloat scale, Posterior *post, const std::vector<int32> &ali, Posterior *post_out, BaseFloat min_post);
+
+void AliPostMapSum(Posterior *post, const std::vector<int32> &ali, Matrix<BaseFloat>* map_sum );
+
 /// Returns the total of all the weights in "post".
 BaseFloat TotalPosterior(const Posterior &post);
 

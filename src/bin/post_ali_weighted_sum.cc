@@ -1,6 +1,6 @@
 // bin/scale-post.cc
 
-// Copyright 2011  Chao Weng
+// Copyright 2016  Chengzhu Yu
 //           2013  Johns Hopkins University (author: Daniel Povey)
 
 // See ../../COPYING for clarification regarding multiple authors
@@ -60,6 +60,7 @@ int main(int argc, char *argv[]) {
     SequentialInt32VectorReader alignment_reader(alignments_rspecifier);
     RandomAccessBaseFloatReader scale_reader(scale_or_scale_rspecifier);
     PosteriorWriter posterior_writer(post_wspecifier); 
+
 
     int32 num_scaled = 0, num_no_scale = 0, num_no_post=0;  
    

@@ -241,6 +241,37 @@ void WeightedSumPosteriorAli(BaseFloat scale, Posterior *post, const std::vector
     }
 }
 
+void WeightedSumPosteriorAli(BaseFloat scale, Posterior *post, const std::vector<int32> &ali, Posterior *post_out, BaseFloat min_post){
+    KALDI_ASSERT(post->size() == ali.size());
+
+    for(size_t i=0; i < post->size(); i++){
+        for (size_t j=0; j < (*post)[i].size() ;j++){
+            
+            if (j != ali[i]){
+                (*post)[i][j].second = scale*(*post)[i][j].second;
+            } else{
+                (*post)[i][j].second = scale*(*post)[i][j].second+(1-scale)*1;
+
+            }
+            
+            if ((*post)[i][j].second >= min_post) (*post_out)[i].push_back(std::make_pair( j, (*post)[i][j].second )); 
+        }
+    }
+}
+
+void AliPostMapSum(Posterior *post, const std::vector<int32> &ali, Matrix<BaseFloat> *map_sum ){
+     KALDI_ASSERT(post->size() == ali.size());
+
+     for(size_t i=0;i<ali.size(); i++){
+
+        for(size_t j=0; j<(*post)[i].size(); j++){
+
+            (*map_sum)( ali[i], (*post)[i][j].first ) += (*post)[i][j].second;     
+
+        }
+     }
+}
+
 BaseFloat TotalPosterior(const Posterior &post) {
   double sum =  0.0;
   size_t T = post.size();
