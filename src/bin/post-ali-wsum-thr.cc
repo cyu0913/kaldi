@@ -1,4 +1,4 @@
-// bin/scale-post.cc
+// bin/post-ali-wsum-thr.cc
 
 // Copyright 2016  Chengzhu Yu
 //           2013  Johns Hopkins University (author: Daniel Povey)

@@ -4,6 +4,7 @@
 //           2013-2014  Johns Hopkins University (author: Daniel Povey)
 //                2014  Guoguo Chen
 //                2014  Guoguo Chen
+//                2016  Chengzhu Yu    
 
 // See ../../COPYING for clarification regarding multiple authors
 //
@@ -254,7 +255,7 @@ void WeightedSumPosteriorAli(BaseFloat scale, Posterior *post, const std::vector
 
             }
             
-            if ((*post)[i][j].second >= min_post) (*post_out)[i].push_back(std::make_pair( j, (*post)[i][j].second )); 
+            if ((*post)[i][j].second >= min_post) (*post_out)[i].push_back(std::make_pair( (*post)[i][j].first, (*post)[i][j].second )); 
         }
     }
 }
@@ -270,6 +271,25 @@ void AliPostMapSum(Posterior *post, const std::vector<int32> &ali, Matrix<BaseFl
 
         }
      }
+}
+
+void AliPostMap(Posterior *post, const std::vector<int32> &ali, Matrix<BaseFloat> *post_map, BaseFloat weight_orig, BaseFloat min_post, Posterior *post_out ){
+     KALDI_ASSERT(post->size() == ali.size());
+
+    for(size_t i=0; i < post->size(); i++){
+        for (size_t j=0; j < (*post)[i].size() ;j++){
+
+            int32 curr_gauss = (*post)[i][j].first;
+            int32 curr_ali = ali[i];
+            BaseFloat ali_post = (*post_map)(curr_ali, curr_gauss); 
+            
+           
+            (*post)[i][j].second = weight_orig*(*post)[i][j].second+(1-weight_orig)*ali_post;
+
+            if ((*post)[i][j].second >= min_post) (*post_out)[i].push_back(std::make_pair( (*post)[i][j].first, (*post)[i][j].second )); 
+        }
+    }
+
 }
 
 BaseFloat TotalPosterior(const Posterior &post) {

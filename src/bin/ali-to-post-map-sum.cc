@@ -1,7 +1,7 @@
 // ali-to-post-map-sum.cc
 
 // Copyright 2016  Chengzhu Yu
-//           2013  Johns Hopkins University (author: Daniel Povey)
+
 
 // See ../../COPYING for clarification regarding multiple authors
 //
@@ -55,9 +55,11 @@ int main(int argc, char *argv[]) {
 
         Matrix<BaseFloat> curr_map;
 
+        {
         bool binary_in;
         Input ki(maps_rxfilename, &binary_in);
         curr_map.Read(ki.Stream(), binary_in);
+    	}
 
         if (i==1){
         	map_sum.Resize(curr_map.NumRows(),curr_map.NumCols());

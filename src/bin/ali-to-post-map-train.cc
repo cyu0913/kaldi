@@ -1,7 +1,7 @@
 // bin/scale-post.cc
 
 // Copyright 2016  Chengzhu Yu
-//           2013  Johns Hopkins University (author: Daniel Povey)
+
 
 // See ../../COPYING for clarification regarding multiple authors
 //

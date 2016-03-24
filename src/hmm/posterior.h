@@ -3,7 +3,7 @@
 // Copyright 2009-2011     Microsoft Corporation
 //           2013-2014     Johns Hopkins University (author: Daniel Povey)
 //                2014     Guoguo Chen
-
+//                2016     Chengzhu Yu 
 
 // See ../../COPYING for clarification regarding multiple authors
 //
@@ -138,6 +138,8 @@ void WeightedSumPosteriorAli(BaseFloat scale, Posterior *post, const std::vector
 void WeightedSumPosteriorAli(BaseFloat scale, Posterior *post, const std::vector<int32> &ali, Posterior *post_out, BaseFloat min_post);
 
 void AliPostMapSum(Posterior *post, const std::vector<int32> &ali, Matrix<BaseFloat>* map_sum );
+
+void AliPostMap(Posterior *post, const std::vector<int32> &ali, Matrix<BaseFloat>* post_map, BaseFloat weight_orig, BaseFloat min_post, Posterior *post_out );
 
 /// Returns the total of all the weights in "post".
 BaseFloat TotalPosterior(const Posterior &post);
