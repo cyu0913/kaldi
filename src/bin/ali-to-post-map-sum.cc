@@ -93,7 +93,7 @@ int main(int argc, char *argv[]) {
      	map_sum.Write(ko.Stream(),binary);
      }
 
-     return 1;
+     return 0;
  }
  catch(const std::exception &e){
       std::cerr << e.what();

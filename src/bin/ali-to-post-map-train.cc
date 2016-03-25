@@ -31,7 +31,7 @@ int main(int argc, char *argv[]){
 
 		const char *usage =
 		    "Train a mapping from forced aligned senone to a bunch of senones/pdfs that is the output of either DNN/GMM prediction "
-		    "Usage: ali-to-post-map-train <alignments-rspecifier> <post-rspecifier> <map-wspecifier> <ali-senone-number> <post-gmm-number>\n";
+		    "Usage: ali-to-post-map-train <alignments-rspecifier> <post-rspecifier> <ali-senone-number> <post-gmm-number> <map-wspecifier>\n";
 
 		ParseOptions po(usage);
 		bool binary = false;
@@ -93,7 +93,7 @@ int main(int argc, char *argv[]){
 		KALDI_LOG << "Done " << ";" << " posteriors;  " << num_no_post
 		          << " had no second alignments.";
   		
-  		return 1;	
+  		return 0;	
 		}
 	 	catch(const std::exception &e){
 			std::cerr << e.what();

@@ -96,7 +96,7 @@ int main(int argc, char *argv[]){
 		KALDI_LOG << "Done " << ";" << " posteriors;  " << num_no_post
 		          << " had no second alignments.";
   		
-  		return 1;	
+  		return 0;	
 		}
 	 	catch(const std::exception &e){
 			std::cerr << e.what();
